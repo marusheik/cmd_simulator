@@ -67,4 +67,4 @@ Created as an interactive web development project inspired by command-line inter
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/marusheik/cmd_simulator/blob/main/LICENSE) file for details
