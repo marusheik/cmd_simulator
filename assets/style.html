@@ -1,0 +1,124 @@
+<style>
+    body {
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+      font-family: monospace;
+      padding: 20px;
+    }
+    .selector {
+      color: #d7ba7d;
+    }
+    .property {
+      color: #9cdcfe;
+    }
+    .value {
+      color: #ce9178;
+    }
+    .punctuation {
+      color: #d4d4d4;
+    }
+    .comment {
+      color: #6a9955;
+    }
+
+  </style>
+
+    <span class="selector">*</span> <span class="punctuation">{</span>
+      <span class="property">margin</span>: <span class="value">0</span><span class="punctuation">;</span>
+      <span class="property">padding</span>: <span class="value">0</span><span class="punctuation">;</span>
+      <span class="property">box-sizing</span>: <span class="value">border-box</span><span class="punctuation">;</span>
+    <span class="punctuation">}</span>
+    
+    <span class="selector">body, html</span> <span class="punctuation">{</span>
+      <span class="property">height</span>: <span class="value">100%</span><span class="punctuation">;</span>
+      <span class="property">display</span>: <span class="value">flex</span><span class="punctuation">;</span>
+      <span class="property">justify-content</span>: <span class="value">center</span><span class="punctuation">;</span>
+      <span class="property">align-items</span>: <span class="value">center</span><span class="punctuation">;</span>
+      <span class="property">background-color</span>: <span class="value">#1e1e1e</span><span class="punctuation">;</span>
+      <span class="property">color</span>: <span class="value">white</span><span class="punctuation">;</span>
+      <span class="property">font-family</span>: <span class="value">monospace</span><span class="punctuation">;</span>
+    <span class="punctuation">}</span>
+    
+    <span class="selector">.terminal</span> <span class="punctuation">{</span>
+      <span class="property">display</span>: <span class="value">flex</span><span class="punctuation">;</span>
+      <span class="property">flex-direction</span>: <span class="value">column</span><span class="punctuation">;</span>
+      <span class="property">overflow</span>: <span class="value">hidden</span><span class="punctuation">;</span>
+      <span class="property">width</span>: <span class="value">600px</span><span class="punctuation">;</span>
+      <span class="property">max-width</span>: <span class="value">800px</span><span class="punctuation">;</span>
+      <span class="property">height</span>: <span class="value">400px</span><span class="punctuation">;</span>
+      <span class="property">background-color</span>: <span class="value">#2f3338</span><span class="punctuation">;</span>
+      <span class="property">border-radius</span>: <span class="value">6px</span><span class="punctuation">;</span>
+      <span class="property">box-shadow</span>: <span class="value">0 0 20px rgba(0,0,0,0.5)</span><span class="punctuation">;</span>
+    <span class="punctuation">}</span>
+    
+    <span class="selector">.terminal-bar</span> <span class="punctuation">{</span>
+      <span class="property">flex-shrink</span>: <span class="value">0</span><span class="punctuation">;</span>
+      <span class="property">background-color</span>: <span class="value">#dbe3eb</span><span class="punctuation">;</span>
+      <span class="property">height</span>: <span class="value">30px</span><span class="punctuation">;</span>
+      <span class="property">display</span>: <span class="value">flex</span><span class="punctuation">;</span>
+      <span class="property">align-items</span>: <span class="value">center</span><span class="punctuation">;</span>
+      <span class="property">padding</span>: <span class="value">0 10px</span><span class="punctuation">;</span>
+    <span class="punctuation">}</span>
+    
+    <span class="selector">.circle</span> <span class="punctuation">{</span>
+      <span class="property">width</span>: <span class="value">12px</span><span class="punctuation">;</span>
+      <span class="property">height</span>: <span class="value">12px</span><span class="punctuation">;</span>
+      <span class="property">border-radius</span>: <span class="value">50%</span><span class="punctuation">;</span>
+      <span class="property">margin-right</span>: <span class="value">8px</span><span class="punctuation">;</span>
+    <span class="punctuation">}</span>
+    
+    <span class="selector">.circle.green</span> <span class="punctuation">{</span> <span class="property">background-color</span>: <span class="value">#3fc950</span><span class="punctuation">; }</span>
+    <span class="selector">.circle.yellow</span> <span class="punctuation">{</span> <span class="property">background-color</span>: <span class="value">#f2cc1f</span><span class="punctuation">; }</span>
+    <span class="selector">.circle.red</span> <span class="punctuation">{</span> <span class="property">background-color</span>: <span class="value">#e74c3c</span><span class="punctuation">; }</span>
+    
+    <span class="selector">#terminal</span> <span class="punctuation">{</span>
+      <span class="property">margin-top</span>: <span class="value">-40px</span><span class="punctuation">;</span>
+      <span class="property">white-space</span>: <span class="value">pre-wrap</span><span class="punctuation">;</span>
+    <span class="punctuation">}</span>
+    
+    <span class="selector">#inputLine</span> <span class="punctuation">{</span>
+      <span class="property">display</span>: <span class="value">flex</span><span class="punctuation">;</span>
+      <span class="property">align-items</span>: <span class="value">center</span><span class="punctuation">;</span>
+      <span class="property">margin-top</span>: <span class="value">-40px</span><span class="punctuation">;</span>
+    <span class="punctuation">}</span>
+    
+    <span class="selector">#staticPrompt</span> <span class="punctuation">{</span>
+      <span class="property">margin-right</span>: <span class="value">5px</span><span class="punctuation">;</span>
+      <span class="property">margin-top</span>: <span class="value">10px</span><span class="punctuation">;</span>
+      <span class="property">margin-bottom</span>: <span class="value">10px</span><span class="punctuation">;</span>
+    <span class="punctuation">}</span>
+    
+    <span class="selector">#commandInput</span> <span class="punctuation">{</span>
+      <span class="property">flex-grow</span>: <span class="value">1</span><span class="punctuation">;</span>
+      <span class="property">background</span>: <span class="value">#2f3338</span><span class="punctuation">;</span>
+      <span class="property">color</span>: <span class="value">white</span><span class="punctuation">;</span>
+      <span class="property">border</span>: <span class="value">none</span><span class="punctuation">;</span>
+      <span class="property">outline</span>: <span class="value">none</span><span class="punctuation">;</span>
+      <span class="property">font-family</span>: <span class="value">monospace</span><span class="punctuation">;</span>
+    <span class="punctuation">}</span>
+    
+    <span class="selector">.input</span> <span class="punctuation">{</span> <span class="property">margin-bottom</span>: <span class="value">10px</span><span class="punctuation">; }</span>
+    
+    <span class="selector">.terminalContainer</span> <span class="punctuation">{</span>
+      <span class="property">flex</span>: <span class="value">1</span><span class="punctuation">;</span>
+      <span class="property">padding</span>: <span class="value">15px</span><span class="punctuation">;</span>
+      <span class="property">overflow-y</span>: <span class="value">auto</span><span class="punctuation">;</span>
+      <span class="property">padding</span>: <span class="value">10px</span><span class="punctuation">;</span>
+    <span class="punctuation">}</span>
+    
+    <span class="selector">.light-gray</span> <span class="punctuation">{</span>
+      <span class="property">color</span>: <span class="value">#afafaf</span><span class="punctuation">;</span>
+    <span class="punctuation">}</span>
+    
+    <span class="selector">.light-gray a</span>,
+    <span class="selector">.light-gray a:visited</span>,
+    <span class="selector">.light-gray a:hover</span>,
+    <span class="selector">.light-gray a:active</span> <span class="punctuation">{</span>
+      <span class="property">color</span>: <span class="value">#afafaf</span><span class="punctuation">;</span>
+      <span class="property">text-decoration</span>: <span class="value">none</span><span class="punctuation">;</span>
+    <span class="punctuation">}</span>
+    
+    <span class="selector">.green</span> <span class="punctuation">{</span>
+      <span class="property">color</span>: <span class="value">green</span><span class="punctuation"> !important;</span>
+    <span class="punctuation">}</span>
+ 

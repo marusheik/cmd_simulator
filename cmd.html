@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-bar">
+          <div class="circle green"></div>
+          <div class="circle yellow"></div>
+          <div class="circle red"></div>
+        </div>
+        <div class="terminalContainer">
+            <div class="typing" id="line1">Daedrics Terminal</div><br>
+            <div class="typing" id="line2">Type 'help' to see the full list of commands</div>
+            <div class="blank-line">&nbsp;</div>
+                
+            <div id="terminal">
+                    <div id="output"></div>
+                    <div id="inputLine">
+                    <span id="staticPrompt">C:\Users\Maru></span>
+                    <input type="text" id="commandInput" autocomplete="off" spellcheck="false">
+                    </div>
+                </div>
+        </div>
+    </div>
+
+      <script src="script.js"></script>
+</body>
+</html>

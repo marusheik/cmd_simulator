@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e1e;
+    color: white;
+    font-family: monospace;
+  }
+
+  .terminal {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 600px;
+    max-width: 800px;
+    height: 400px;
+    background-color: #2f3338;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  }
+
+  .terminal-bar {
+    flex-shrink: 0;
+    background-color: #dbe3eb;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+
+  .circle.green { background-color: #3fc950; }
+  .circle.yellow { background-color: #f2cc1f; }
+  .circle.red { background-color: #e74c3c; }
+
+
+  #terminal {
+    
+    margin-top: -40px;
+    white-space: pre-wrap;
+  }
+  #inputLine {
+    display: flex;
+    align-items: center;
+    margin-top: -40px;
+  }
+  #staticPrompt {
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px
+  }
+  #commandInput {
+    flex-grow: 1;
+    background: #2f3338;
+    color: white;
+    border: none;
+    outline: none;
+    font-family: monospace;
+  }
+  .input{
+    margin-bottom: 10px
+  }
+
+  .terminalContainer{
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    padding: 10px;
+
+  }
+
+  .light-gray{
+    color: #afafaf;         
+  }
+
+  .light-gray a {
+    color: #afafaf;         
+    text-decoration: none; 
+  }
+  
+  .light-gray a:visited {
+    color: #afafaf;
+  }
+  
+  .light-gray a:hover {
+    color: #afafaf;
+  }
+  
+  .light-gray a:active {
+    color: #afafaf;
+  }
+
+
+  .green{
+    color: green!important;
+  }
+
+
+  .typing {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  #line1 {
+    animation: type 4s steps(20, end) forwards;
+  }
+  
+  #line2 {
+    animation: none;
+    opacity: 0;
+    animation: fadeIn 0.1s ease forwards 4s, type 4s steps(40, end) forwards 4s;
+    animation-delay: 1s;
+  }
+
+  #staticPrompt{
+    opacity: 0;
+    animation: fadeIn 0.1s ease forwards 4s
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes type {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  

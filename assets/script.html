@@ -1,0 +1,205 @@
+<style>
+    code {
+      margin-top: -40px;
+      color: #afafaf;
+    }
+    .keyword {
+      color: #569cd6;
+    }
+    .string {
+      color: #ce9178;
+    }
+    .comment {
+      color: #6a9955;
+    }
+    .function {
+      color: #dcdcaa;
+    }
+    .operator {
+      color: #9cdcfe;
+    }
+    .number {
+      color: #b5cea8;
+    }
+  </style>
+
+    <code>
+    <span class="keyword">const</span> simulatedFileSystem = { 
+        "<span class="string">C:\\Users\\Maru</span>": {
+          Documents: {
+            Resume: {
+              "<span class="string">Experience.txt</span>":"assets/experience.html",
+              "<span class="string">Education.txt</span>": "assets/education.html",
+              "<span class="string">Skills.txt</span>": "assets/skills.html",
+              "<span class="string">Languages.txt</span>": "assets/languages.html",
+              "<span class="string">Contact.txt</span>":"assets/contact.html"
+            },
+            Contact: {},
+            Personal: {},
+          },
+          Projects: {
+            CMD_Simulator: {
+              "<span class="string">script.js</span>":"assets/script.html",
+              "<span class="string">style.css</span>":"assets/style.html",
+              "<span class="string">cmd.html</span>":"assets/cmd.html",
+              "<span class="string">Readme.md</span>":"assets/readme.html",
+            },
+          },
+        },
+      };
+    
+      <span class="keyword">let</span> currentDirectoryPath = ["<span class="string">C:\\Users\\Maru</span>"];
+      <span class="keyword">const</span> commandLineInput = document.getElementById('<span class="string">commandInput</span>');
+      <span class="keyword">const</span> commandPrompt = document.getElementById('<span class="string">staticPrompt</span>');
+      <span class="keyword">const</span> commandOutput = document.getElementById('<span class="string">output</span>');
+    
+      commandLineInput.addEventListener('<span class="keyword">keydown</span>', <span class="keyword">function</span>(event) {
+        <span class="keyword">if</span> (event.key === '<span class="string">Enter</span>') {
+          event.preventDefault();
+          <span class="keyword">const</span> input = commandLineInput.value.trim();
+          <span class="keyword">if</span> (input !== '') {
+            handleCommand(input);
+          }
+          commandLineInput.value = '';
+        }
+      });
+    
+      <span class="keyword">function</span> handleCommand(input) {
+    
+        commandOutput.innerHTML += <span class="string">${getCurrentDirectoryPath()} > ${input}</span>;
+    
+        <span class="keyword">if</span> (input.startsWith('<span class="string">cd </span>')) {
+          <span class="keyword">const</span> folder = input.slice(3).trim();
+          changeDirectory(folder);
+        } <span class="keyword">else if</span> (input === '<span class="string">dir</span>') {
+          listDirectoryContents();
+        } <span class="keyword">else if</span> (input === '<span class="string">cls</span>') {
+          commandOutput.innerHTML = '';
+        } <span class="keyword">else if</span> (input === '<span class="string">help</span>') {
+          displayHelp();
+        } <span class="keyword">else if</span> (input.startsWith('<span class="string">cat </span>')) {
+          <span class="keyword">const</span> fileName = input.slice(4).trim();
+          displayFileContent(fileName);
+        } <span class="keyword">else</span> {
+          commandOutput.innerHTML += <span class="string">Unrecognized command: ${input}</span>;
+        }
+    
+        refreshCommandPrompt();
+        scrollToBottomOfTerminal()
+      }
+    
+      <span class="keyword">function</span> changeDirectory(folderName) {
+        <span class="keyword">if</span> (folderName === "<span class="string">..</span>") {
+          <span class="keyword">if</span> (currentDirectoryPath.length > 1) {
+            currentDirectoryPath.pop();
+          } <span class="keyword">else</span> {
+            commandOutput.innerHTML += "You are already at the root.";
+          }
+        } <span class="keyword">else</span> {
+          <span class="keyword">let</span> pointer = simulatedFileSystem;
+          <span class="keyword">for</span> (<span class="keyword">let</span> dir of currentDirectoryPath) {
+            pointer = pointer[dir];
+          }
+    
+          <span class="keyword">if</span> (pointer.hasOwnProperty(folderName) && <span class="keyword">typeof</span> 
+            pointer[folderName] === '<span class="string">object</span>') {
+            currentDirectoryPath.push(folderName);
+          } <span class="keyword">else</span> {
+            commandOutput.innerHTML += <span class="string">"${folderName}" Is not a valid directory.</span>;
+          }
+        }
+    
+        refreshCommandPrompt();
+        scrollToBottomOfTerminal();
+      }
+    
+      <span class="keyword">function</span> listDirectoryContents() {
+        <span class="keyword">let</span> pointer = simulatedFileSystem;
+        <span class="keyword">for</span> (<span class="keyword">let</span> dir of currentDirectoryPath) {
+          pointer = pointer[dir];
+        }
+    
+        <span class="keyword">const</span> folders = <span class="keyword">Object</span>.keys(pointer);
+        <span class="keyword">if</span> (folders.length === 0) {
+          commandOutput.innerHTML += <span class="string">&lt;vacío&gt;</span>;
+        } <span class="keyword">else</span> {
+          commandOutput.innerHTML += 
+          <span class="string">Volume in drive C has no label.</span><br>
+          <span class="string">Volume Serial Number is 260E-5035</span> <br>
+          <span class="string">Directory of ${getCurrentDirectoryPath()}</span><br>
+          
+          folders.forEach(folder => {
+            <span class="keyword">if</span> (!folder.endsWith('<span class="string">.txt</span>')) {
+              commandOutput.innerHTML += <span class="string">29/04/2025  12:59   &lt;DIR&gt;    ${folder}</span>;
+            } <span class="keyword">else</span> {
+              commandOutput.innerHTML += <span class="string">29/04/2025  12:59    ${folder}</span>;
+            }
+          });
+          commandOutput.innerHTML += <span class="string"></div></span>
+        }
+      }
+    
+      <span class="keyword">function</span> displayFileContent(fileName) {
+        <span class="keyword">let</span> pointer = simulatedFileSystem;
+        <span class="keyword">for</span> (<span class="keyword">let</span> dir of currentDirectoryPath) {
+          <span class="keyword">if</span> (pointer[dir]) {
+            pointer = pointer[dir];
+          } <span class="keyword">else</span> {
+            commandOutput.innerHTML += <span class="string">The file "${fileName}" does not exist.</span>;
+            <span class="keyword">return</span>;
+          }
+        }
+    
+        <span class="keyword">if</span> (pointer.hasOwnProperty(fileName)) {
+          <span class="keyword">const</span> filePath = pointer[fileName];
+          <span class="keyword">if</span> (<span class="keyword">typeof</span> filePath === '<span class="string">string</span>') {
+            fetch(filePath)
+              .then(response => {
+                <span class="keyword">if</span> (!response.ok) {
+                  <span class="keyword">throw</span> new Error("Failed to load the file");
+                }
+                <span class="keyword">return</span> response.text();
+              })
+              .then(content => {
+                commandOutput.innerHTML += <span class="string">${content}</span>;
+                scrollToBottomOfTerminal();
+              })
+              .catch(error => {
+                commandOutput.innerHTML += <span class="string">Error reading "${fileName}": ${error.message}</span>;
+              });
+          }
+        } <span class="keyword">else</span> {
+          commandOutput.innerHTML += <span class="string">The file "${fileName}" does not exist in the current directory.</span>;
+        }
+      }
+    
+      <span class="keyword">function</span> displayHelp(){
+        commandOutput.innerHTML += 
+        <span class="string">Available commands:</span><br><br>
+              '<span class="string">HELP  </span>.................... show this help',<br>
+              '<span class="string">DIR   </span>.................... list folders',<br>
+              '<span class="string">CLS   </span>.................... clear terminal',<br>
+              '<span class="string">CD    </span>.................... move to another directory',<br>
+              '<span class="string">CAT   </span>.................... show content from files',<br>
+               ;
+      }
+    
+      <span class="keyword">function</span> refreshCommandPrompt() {
+        commandPrompt.innerText = ${getCurrentDirectoryPath()} >;
+      }
+    
+      <span class="keyword">function</span> scrollToBottomOfTerminal() {
+        <span class="keyword">const</span> terminalContainer = document.querySelector('.terminalContainer');
+        terminalContainer.scrollTop = terminalContainer.scrollHeight;
+      }
+    
+      <span class="keyword">function</span> getCurrentDirectoryPath() {
+        <span class="keyword">if</span> (currentDirectoryPath.length === 1) {
+          <span class="keyword">return</span> currentDirectoryPath[0] + '<span class="string">\\</span>';
+        } <span class="keyword">else</span> {
+          <span class="keyword">return</span> currentDirectoryPath[0] + '<span class="string">\\</span>' + 
+          currentDirectoryPath.slice(1).join('<span class="string">\\</span>');
+        }
+      }
+      </code>
+  
