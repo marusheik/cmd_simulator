@@ -56,7 +56,7 @@ cat filename → Displays the content of a file (linked to an .html).
 ### 📌 Notes
 
 - The `.txt` files don’t contain plain text—they link to HTML files located in the `assets` folder.
-- This is a front-end simulation only; it does not interact with your actual file system.
+- This is a front-end simulation only, it does not interact with your actual file system.
 
 
 ## Authors
